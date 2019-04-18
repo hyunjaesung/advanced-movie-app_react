@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import Router from "./Router";
-import Header from "./Header";
+import Router from "Components/Router";
+import Header from "Components/Header";
+
+// index.js가 있기때문에 이렇게 써도 해당폴더가서 가져올수 있음
+// ./이런경로보다 이렇게써야함
 
 class App extends Component {
   render() {
