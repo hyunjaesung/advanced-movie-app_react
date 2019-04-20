@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -24,6 +24,9 @@ const Item = styled.li`
   width: 80px;
   height: 50px;
   text-align: center;
+  transition: border-bottom 0.5s ease-in-out;
+  border-bottom: 3px solid
+    ${props => (props.current ? "#3498db" : "transparent")};
 `;
 
 const SLink = styled(Link)`
@@ -33,18 +36,20 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
+  // 다른컴포넌트가 안에있는 with Router를 export하는것
+  // withRouter를 놨기때문에 props 접근이 가능
   <Header>
     <List>
-      <Item>
+      <Item current={pathname === "/"}>
         <SLink to="/">Movies</SLink>
       </Item>
-      <Item>
+      <Item current={pathname === "/tv"}>
         <SLink to="/tv">TV</SLink>
       </Item>
-      <Item>
+      <Item current={pathname === "/search"}>
         <SLink to="/search">Search</SLink>
       </Item>
     </List>
   </Header>
-);
+));
