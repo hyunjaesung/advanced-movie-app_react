@@ -11,11 +11,23 @@ export default class extends React.Component {
     loading: false // 디폴트로 아무것도 로딩 안함! 검색기다림
   };
 
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault(); // 엔터를 쳐도 자동으로 submit&초기화안됨
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       this.searchByTerm();
     }
+  };
+
+  updatedTerm = event => {
+    const {
+      target: { value }
+    } = event;
+    console.log(value);
+    this.setState({
+      // 이거해야 한글자가아니라 Presenter에서 여러글자 value로 쌓여감
+      searchTerm: value
+    });
   };
 
   searchByTerm = async () => {
@@ -48,6 +60,7 @@ export default class extends React.Component {
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updatedTerm={this.updatedTerm}
       />
     );
   }
