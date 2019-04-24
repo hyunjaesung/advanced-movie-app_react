@@ -25,6 +25,7 @@ export default class extends React.Component {
       const {
         data: { results: movieResults }
       } = await movieApi.search(searchTerm);
+
       const {
         data: { results: tvResults }
       } = await TVApi.search(searchTerm);
