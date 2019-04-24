@@ -32,7 +32,7 @@ export default class extends React.Component {
       }); // State에 넣어줌
     } catch {
       this.setState({
-        error: "can't find movies infomation."
+        error: "can't find TVs infomation."
       });
     } finally {
       this.setState({

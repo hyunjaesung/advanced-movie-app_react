@@ -1,5 +1,5 @@
 import React from "react";
-import ProsTypes from "prop-types";
+import propTypes from "prop-types";
 import styled from "styled-components";
 
 const SearchPresenter = ({
@@ -11,14 +11,14 @@ const SearchPresenter = ({
   loading
 }) => null;
 
-SearchPresenter.ProsTypes = {
-  // props의 자료형 정해줌
-  movieResult: ProsTypes.array,
-  tvResult: ProsTypes.array,
-  searchTerm: ProsTypes.string,
-  handleSubmit: ProsTypes.func.isRequired,
-  loading: ProsTypes.bool.isRequired,
-  error: ProsTypes.string
+SearchPresenter.propTypes = {
+  // props의 자료형 정해줌propTypes
+  movieResult: propTypes.array,
+  tvResult: propTypes.array,
+  searchTerm: propTypes.string,
+  handleSubmit: propTypes.func.isRequired,
+  loading: propTypes.bool.isRequired,
+  error: propTypes.string
 };
 
 export default SearchPresenter;
