@@ -22,17 +22,19 @@ const Backdrop = styled.div`
   background-position: center center;
   background-size: cover;
   filter: blur(3px);
-  opacity: 0.5;
+  opacity: 0.3;
   z-index: 0;
 `;
 
 const Content = styled.div`
-  display: block;
+  display: flex;
   width: 100%;
   height: 100%;
   position: relateive;
+  transition: all 0.5s ease-in-out;
   z-index: 1;
 `;
+
 const Cover = styled.div`
   width: 30%;
   height: 100%;
@@ -41,6 +43,35 @@ const Cover = styled.div`
   background-size: cover;
   z-index: 5;
   border-radius: 5px;
+`;
+
+const Data = styled.div`
+  width: 70%;
+  margin-left: 10px;
+  z-index: 5;
+`;
+
+const Title = styled.h1`
+  font-size: 32px;
+  margin-bottom: 10px;
+`;
+
+const ItemContainer = styled.div`
+  margin-bottom: 10px;
+`;
+
+const Item = styled.span``;
+
+const Divider = styled.span`
+  margin: 10px;
+`;
+
+const Overview = styled.p`
+  font-size: 12px;
+  opacity: 0.7;
+  line-height: 1.5;
+  width: 50;
+  text-align: justify;
 `;
 
 const DetailPresenter = ({ result, error, loading }) =>
@@ -59,6 +90,37 @@ const DetailPresenter = ({ result, error, loading }) =>
               : require("../../assets/yeji.jpg")
           }
         />
+        <Data>
+          <Title>
+            {result.original_title
+              ? result.original_title
+              : result.original_name}
+          </Title>
+          <ItemContainer>
+            <Item>
+              {result.release_date
+                ? result.release_date.substring(0, 4)
+                : result.first_air_date.substring(0, 4)}
+            </Item>
+            <Divider>.</Divider>
+            <Item>
+              {result.runtime
+                ? `${result.runtime} min`
+                : `${result.episode_run_time} min`}
+            </Item>
+            <Divider>.</Divider>
+            <Item>
+              {result.genres &&
+                result.genres.map((genre, index) =>
+                  index === result.genres.length - 1
+                    ? genre.name
+                    : `${genre.name} / `
+                )}
+              {/* 마지막 부분은 /안쓰이게 map은 index를가진다!! */}
+            </Item>
+          </ItemContainer>
+          <Overview>{result.overview}</Overview>
+        </Data>
       </Content>
     </Container>
   );

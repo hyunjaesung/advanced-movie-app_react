@@ -25,6 +25,7 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               title={movie.original_title}
               rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
+              isMovie={true}
               // null될때 방지
             />
           ))}
@@ -41,6 +42,7 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               title={movie.original_title}
               rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
+              isMovie={true}
             />
           ))}
         </Section>
@@ -55,6 +57,7 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               title={movie.original_title}
               rating={movie.vote_average}
               year={movie.release_date && movie.release_date.substring(0, 4)}
+              isMovie={true}
             />
           ))}
         </Section>

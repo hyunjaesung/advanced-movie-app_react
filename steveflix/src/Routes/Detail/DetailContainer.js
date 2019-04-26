@@ -41,7 +41,6 @@ export default class extends React.Component {
       if (isMovie) {
         const request = await movieApi.movieDetail(parsedID);
         result = request.data;
-        console.log(result);
         //const { data: result } = await movieApi.movieDetail(parsedID);
       } else {
         const request = await TVApi.showDetail(parsedID);
