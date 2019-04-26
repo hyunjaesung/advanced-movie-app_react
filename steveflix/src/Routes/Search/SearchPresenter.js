@@ -5,6 +5,7 @@ import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -31,6 +32,9 @@ const SearchPresenter = ({
   loading
 }) => (
   <Container>
+    <Helmet>
+      <title>Search | Steveflix</title>
+    </Helmet>
     <Form onSubmit={handleSubmit}>
       {/* SearchContainer안에 있는 서브밋, searchTerm에 넣어주면 찾음 */}
       <Input
