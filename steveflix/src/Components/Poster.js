@@ -49,7 +49,7 @@ const Year = styled.span`
 `;
 
 const Poster = ({ id, imgUrl, title, rating, year, isMovie = false }) => (
-  <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+  <Link to={isMovie ? `/show/${id}` : `/movie/${id}`}>
     {/* 무비랑 쇼 링크 구분 */}
     <Container>
       <ImageContainer>
