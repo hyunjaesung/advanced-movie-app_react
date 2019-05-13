@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/advanced-movie-app_react/static/js/runtime~main.b24cb595.js"
   },
   {
-    "revision": "6242bf24ebe5ba2b0140",
-    "url": "/advanced-movie-app_react/static/js/main.71a33cf8.chunk.js"
+    "revision": "cf6d04e5e1992cec2219",
+    "url": "/advanced-movie-app_react/static/js/main.3bb848f8.chunk.js"
   },
   {
     "revision": "5a1bc39d8c6cabcfa253",
     "url": "/advanced-movie-app_react/static/js/2.43292375.chunk.js"
   },
   {
-    "revision": "0e2ba554a117dde2ce6ed055477ce55e",
+    "revision": "8f4292239809fc183469d322eb56a9d4",
     "url": "/advanced-movie-app_react/index.html"
   }
 ];
