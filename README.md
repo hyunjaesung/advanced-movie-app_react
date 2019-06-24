@@ -1,15 +1,17 @@
-# SteveFlix
+## [SteveFlix](https://eager-borg-f01cee.netlify.com)
+
+stack : React, StyledComponents, ReactRouter 
 
 Learning React and ES6 by building Movie Discovery APP
 
-## Screens
+### Screens
 
 - [x] Home
 - [x] TV Shows
 - [x] Search
 - [x] Detail
 
-## API Verbs
+### API Verbs
 
 - [x] Now Playing
 - [x] Upcoming (TV, Movie)
