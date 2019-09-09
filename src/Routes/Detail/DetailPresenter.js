@@ -134,6 +134,18 @@ const DetailPresenter = ({ result, error, loading }) =>
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
+      {/* <InsideMenu>
+        <List>
+          <Item active={pathname === `/coins/${coin.id}/markets`}>
+            <Link to={`/coins/${coin.id}/markets`}>Markets</Link>
+          </Item>
+          <Item active={pathname === `/coins/${coin.id}/exchanges`}>
+            <Link to={`/coins/${coin.id}/exchanges`}>Exchanges</Link>
+          </Item>
+        </List>
+      </InsideMenu>
+      <Route path="/coins/:id/markets" component={Markets} />
+      <Route path="/coins/:id/exchanges" component={Exchanges} /> */}
     </Container>
   );
 

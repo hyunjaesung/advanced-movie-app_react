@@ -16,11 +16,11 @@ export default () => (
     <>
       <Header />
       <Switch>
-        <Route path="https://hyunjaesung.github.io/advanced-movie-app_react/" exact component={Home} />
-        <Route path="https://hyunjaesung.github.io/advanced-movie-app_react/tv" exact component={TV} />
-        <Route path="https://hyunjaesung.github.io/advanced-movie-app_react/search" exact component={Search} />
-        <Route path="https://hyunjaesung.github.io/advanced-movie-app_react/movie/:id" component={Detail} />
-        <Route path="https://hyunjaesung.github.io/advanced-movie-app_react/show/:id" component={Detail} />
+        <Route path="/" exact component={Home} />
+        <Route path="/tv" exact component={TV} />
+        <Route path="/search" exact component={Search} />
+        <Route path="/movie/:id" component={Detail} />
+        <Route path="/show/:id" component={Detail} />
         <Redirect from="*" to="/" />
         {/* 일치하는 Route가 하나도 없다면 어느페이지든지 "/"  여기로 보내라 */}
       </Switch>
