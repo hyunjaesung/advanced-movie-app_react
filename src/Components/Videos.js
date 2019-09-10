@@ -43,7 +43,7 @@ const Videos = ({ location, match }) => {
             type="text/html"
             width="400"
             height="250"
-            src={`http://www.youtube.com/embed/${item.key}`}
+            src={`//www.youtube.com/embed/${item.key}`}
             frameborder="0"
             allow="autoplay; encrypted-media; gyroscope; accelerometer"
             allowfullscreen="true"
