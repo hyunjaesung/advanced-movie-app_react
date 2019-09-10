@@ -46,7 +46,7 @@ export default class extends React.Component {
         const request = await TVApi.showDetail(parsedID);
         result = request.data;
       }
-      console.log(result);
+      // console.log(result);
     } catch {
       this.setState({ error: "Can't find anything." });
     } finally {
@@ -56,6 +56,7 @@ export default class extends React.Component {
 
   render() {
     const { result, error, loading } = this.state;
+    // console.log(result);
     return <DetailPresenter result={result} error={error} loading={loading} />;
   }
 }

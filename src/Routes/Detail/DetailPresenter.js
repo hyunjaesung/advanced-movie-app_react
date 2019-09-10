@@ -3,6 +3,9 @@ import ProsTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
+import { Link, withRouter, Route } from "react-router-dom";
+import Videos from "../../Components/Videos";
+import Productions from "../../Components/Productions";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -75,79 +78,145 @@ const Overview = styled.p`
   text-align: justify;
 `;
 
-const DetailPresenter = ({ result, error, loading }) =>
-  loading ? (
-    <>
-      <Helmet>
-        <title>Loading | Steveflix</title>
-      </Helmet>
-      <Loader />
-    </>
-  ) : (
-    <Container>
-      <Helmet>
-        <title>
-          {result.original_title ? result.original_title : result.original_name}
-          } | Steveflix
-        </title>
-      </Helmet>
-      <Backdrop
-        bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
-      />
-      <Content>
-        <Cover
-          bgImage={
-            result.poster_path
-              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : require("../../assets/yeji.jpg")
-          }
-        />
-        <Data>
-          <Title>
+const InsideMenu = styled.div`
+  margin: 20px 0px;
+`;
+
+const List = styled.ul`
+  display: flex;
+`;
+
+const Itemli = styled.li`
+  cursor: pointer;
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 2px solid #1abc9c;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: ${props => (props.active ? "#1abc9c" : "transparent")};
+  color: ${props => (props.active ? "white" : "black")};
+`;
+
+const DetailPresenter = withRouter(
+  ({ location: { pathname }, result, error, loading }) =>
+    loading ? (
+      <>
+        <Helmet>
+          <title>Loading | Steveflix</title>
+        </Helmet>
+        <Loader />
+      </>
+    ) : (
+      <Container>
+        <Helmet>
+          <title>
             {result.original_title
               ? result.original_title
               : result.original_name}
-          </Title>
-          <ItemContainer>
-            <Item>
-              {result.release_date
-                ? result.release_date.substring(0, 4)
-                : result.first_air_date.substring(0, 4)}
-            </Item>
-            <Divider>.</Divider>
-            <Item>
-              {result.runtime
-                ? `${result.runtime} min`
-                : `${result.episode_run_time} min`}
-            </Item>
-            <Divider>.</Divider>
-            <Item>
-              {result.genres &&
-                result.genres.map((genre, index) =>
-                  index === result.genres.length - 1
-                    ? genre.name
-                    : `${genre.name} / `
-                )}
-              {/* 마지막 부분은 /안쓰이게 map은 index를가진다!! */}
-            </Item>
-          </ItemContainer>
-          <Overview>{result.overview}</Overview>
-        </Data>
-      </Content>
-      {/* <InsideMenu>
-        <List>
-          <Item active={pathname === `/coins/${coin.id}/markets`}>
-            <Link to={`/coins/${coin.id}/markets`}>Markets</Link>
-          </Item>
-          <Item active={pathname === `/coins/${coin.id}/exchanges`}>
-            <Link to={`/coins/${coin.id}/exchanges`}>Exchanges</Link>
-          </Item>
-        </List>
-      </InsideMenu>
-      <Route path="/coins/:id/markets" component={Markets} />
-      <Route path="/coins/:id/exchanges" component={Exchanges} /> */}
-    </Container>
-  );
+            } | Steveflix
+          </title>
+        </Helmet>
+        <Backdrop
+          bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
+        />
+        <Content>
+          <Cover
+            bgImage={
+              result.poster_path
+                ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                : require("../../assets/yeji.jpg")
+            }
+          />
+          <Data>
+            <Title>
+              {result.original_title
+                ? result.original_title
+                : result.original_name}
+            </Title>
+            <ItemContainer>
+              <Item>
+                {result.release_date
+                  ? result.release_date.substring(0, 4)
+                  : result.first_air_date.substring(0, 4)}
+              </Item>
+              <Divider>.</Divider>
+              <Item>
+                {result.runtime
+                  ? `${result.runtime} min`
+                  : `${result.episode_run_time} min`}
+              </Item>
+              <Divider>.</Divider>
+              <Item>
+                {result.genres &&
+                  result.genres.map((genre, index) =>
+                    index === result.genres.length - 1
+                      ? genre.name
+                      : `${genre.name} / `
+                  )}
+                {/* 마지막 부분은 /안쓰이게 map은 index를가진다!! */}
+              </Item>
+            </ItemContainer>
+            <Overview>{result.overview}</Overview>
+            <InsideMenu>
+              <List>
+                <Itemli
+                  active={
+                    result.original_title
+                      ? pathname === `/movie/${result.id}/videos`
+                      : pathname === `/show/${result.id}/videos`
+                  }
+                >
+                  <Link
+                    to={
+                      result.original_title
+                        ? `/movie/${result.id}/videos`
+                        : `/show/${result.id}/videos`
+                    }
+                  >
+                    Videos
+                  </Link>
+                </Itemli>
+                <Itemli
+                  active={
+                    result.original_title
+                      ? pathname === `/movie/${result.id}/productions`
+                      : pathname === `/show/${result.id}/productions`
+                  }
+                >
+                  <Link
+                    to={
+                      result.original_title
+                        ? `/movie/${result.id}/productions`
+                        : `/show/${result.id}/productions`
+                    }
+                  >
+                    Productions
+                  </Link>
+                </Itemli>
+              </List>
+            </InsideMenu>
+            <Route
+              path={
+                result.original_title ? `/movie/:id/videos` : `/show/:id/videos`
+              }
+              exact
+              component={Videos}
+            />
+            <Route
+              path={
+                result.original_title
+                  ? `/movie/:id/productions`
+                  : `/show/:id/productions`
+              }
+              exact
+              component={Productions}
+            />
+          </Data>
+        </Content>
+      </Container>
+    )
+);
 
 DetailPresenter.ProsTypes = {
   // props의 자료형 정해줌
