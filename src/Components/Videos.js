@@ -39,11 +39,14 @@ const Videos = ({ location, match }) => {
         videos.map(item => (
           <iframe
             key={item.id}
+            title={item.key}
             type="text/html"
             width="400"
             height="250"
             src={`http://www.youtube.com/embed/${item.key}`}
             frameborder="0"
+            allow="autoplay; encrypted-media; gyroscope; accelerometer"
+            allowfullscreen="true"
           ></iframe>
         ))}
     </div>
