@@ -41,9 +41,9 @@ const Videos = ({ location, match }) => {
             key={item.id}
             id="player"
             type="text/html"
-            width="320px"
-            height="180px"
-            src={`https://www.youtube.com/watch?v=${item.key}`}
+            width="400px"
+            height="250px"
+            src={`http://www.youtube.com/embed/${item.key}`}
             frameborder="0"
             style={{ margin: "10px" }}
           ></iframe>
