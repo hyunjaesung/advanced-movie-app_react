@@ -91,11 +91,11 @@ const Itemli = styled.li`
   margin-right: 20px;
   text-transform: uppercase;
   font-weight: 600;
-  border: 2px solid #1abc9c;
+  border: 2px solid #34495e;
   padding: 5px;
   border-radius: 3px;
-  background-color: ${props => (props.active ? "#1abc9c" : "transparent")};
-  color: ${props => (props.active ? "white" : "black")};
+  background-color: ${props => (props.active ? "#34495e" : "transparent")};
+  color: white;
 `;
 
 const DetailPresenter = withRouter(
